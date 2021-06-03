@@ -1,13 +1,7 @@
 # design_pattern_trial
 
-- python version
+- python version: Python 3.9.5
 
-Python 3.9.5
+- framework: tornado 6.1
 
-- pip freeze
-
-tornado==6.1
-
-- database
-
-mariaDB
+- database: mariaDB
