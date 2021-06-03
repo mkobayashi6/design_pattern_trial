@@ -11,10 +11,21 @@ services:
         depends_on:
             - db
     db:
-        image: postgres:10
-        environment:
-            POSTGRES_DB: "py_db"
-            POSTGRES_USER: "py_user"
-            POSTGRES_PASSWORD: "py_pass"
+        image: mariadb
+        restart: always
+        ports:
+            - ${DBPORT}:${DBPORT}
         volumes:
-            - ~/docker/postgres:/var/lib/postgresql/data
+            - "./mysql:/var/lib/mysql"
+            - "./initdb.d:/docker-entrypoint-initdb.d"
+        environment:
+            - MYSQL_ROOT_PASSWORD=${ROOTPASS}
+            - MYSQL_DATABASE=${DATABASE}
+            - MYSQL_USER=${USERNAME}
+            - MYSQL_PASSWORD=${USERPASS}
+ 
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8080:8080
