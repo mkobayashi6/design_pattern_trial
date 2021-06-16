@@ -12,6 +12,7 @@ class MainHandler(tornado.web.RequestHandler):
 application = tornado.web.Application([
         (r"/", MainHandler),
     ],
+    debug=True,
     template_path=os.path.join(os.getcwd(),  "templates"),
     static_path=os.path.join(os.getcwd(),  "static"),
 )
