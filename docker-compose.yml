@@ -3,11 +3,11 @@ version: '3.1'
 services:
     web:
         build: .
-        command: python3 server.py
+        command: python3 manage.py runserver 0.0.0.0:8000
         volumes:
             - .:/app:delegated
         ports:
-            - "5000:5000"
+            - "8000:8000"
         depends_on:
             - db
     db:

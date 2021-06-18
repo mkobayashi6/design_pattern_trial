@@ -4,3 +4,4 @@ RUN mkdir /app
 WORKDIR /app
 COPY requirements.txt ${WORKDIR}
 RUN pip install -r requirements.txt
+ADD . {WORKDIR}

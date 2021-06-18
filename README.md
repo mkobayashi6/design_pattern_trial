@@ -2,6 +2,6 @@
 
 - language: Python 3.9.5
 
-- framework: tornado 6.1
+- framework: Django 3.1.3
 
 - database: mariaDB
