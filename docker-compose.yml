@@ -3,13 +3,20 @@ version: '3.1'
 services:
     web:
         build: .
-        command: python3 manage.py runserver 0.0.0.0:8000
+        command: python3 manage.py runserver 0.0.0.0:5000
         volumes:
             - .:/app:delegated
         ports:
-            - "8000:8000"
+            - "5000:5000"
         depends_on:
             - db
+        environment:
+            - MYSQL_ROOT_PASSWORD=${ROOTPASS}
+            - MYSQL_DATABASE=${DATABASE}
+            - MYSQL_USER=${USERNAME}
+            - MYSQL_PASSWORD=${USERPASS}
+            - MYSQL_PORT=${DBPORT}
+            - MYSQL_HOST=db
     db:
         image: mariadb
         restart: always

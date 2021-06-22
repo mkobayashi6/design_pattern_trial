@@ -1,0 +1,10 @@
+{% if latest_category_list %}
+    {{ latest_category_list }}
+    <ul>
+    {% for key, value in latest_category_list %}
+        <li><a href="/iterator_trial/{{ key }}/">{{ value }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No category are available.</p>
+{% endif %}
