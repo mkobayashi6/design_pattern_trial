@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
+    path('django_tutorial/', include('django_tutorial.urls')),
     path('iterator_trial/', include('iterator_trial.urls')),
+    path('visitor_trial/', include('visitor_trial.urls')),
     path('admin/', admin.site.urls),
 ]

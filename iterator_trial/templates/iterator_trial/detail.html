@@ -1,1 +1,25 @@
-You're looking at category {{ category_id }}
+<h1>{{ category.name }}</h1>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% for subcategory in category.subcategory_set.all %}
+    <legend><h1>{{ subcategory.name }}</h1></legend>
+    <form action="{% url 'iterator_trial:gender' category.id %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <input type="hidden" name="sub_id" id="sub_id" value="{{ subcategory.id }}">
+            {% for key, value in choices %}
+                <input type="radio" name="{{ subcategory.id }}_choice" {% if subcategory.gender == key %} checked='true' {% endif %} id="{{subcategory.id}}_{{ key }}" value="{{ key }}">
+                <label for="{{subcategory.id}}_{{ key }}">{{ value }}</label><br>
+            {% endfor %}
+            <input type="radio" name="{{ subcategory.id }}_choice" id="{{subcategory.id}}_3" value="3">
+            <label for="{{subcategory.id}}_3">invalid choice</label><br>
+        </fieldset>
+        <input type="submit" value="Apply">
+    </form>
+{% endfor %}
+
+<h1>{{ category.name }}</h1>
+<ul>
+    {% for sub in category.subcategory_set.all %}
+        <li>{{ sub.name }}</li>
+    {% endfor %}
+</ul>

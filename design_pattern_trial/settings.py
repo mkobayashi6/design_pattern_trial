@@ -32,7 +32,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_tutorial.apps.DjangoTutorialConfig',
     'iterator_trial.apps.IteratorTrialConfig',
+    'visitor_trial.apps.VisitorTrialConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -83,6 +85,7 @@ DATABASES = {
         'PASSWORD': os.environ['MYSQL_PASSWORD'],
         'HOST': os.environ['MYSQL_HOST'],
         'PORT': os.environ['MYSQL_PORT'],
+        'TEST': { 'NAME': 'test_db'}, 
     }
 }
 
@@ -111,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
